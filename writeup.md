@@ -17,6 +17,7 @@ The goals / steps of this project are the following:
 ###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
 My pipeline consisted of 6 major steps: 
+
 1. Convert original image to grayscale.
 2. Apply Gaussian smoothing to the grayscale image.
 3. Use Canny function to find ages via gradient.
@@ -25,10 +26,11 @@ My pipeline consisted of 6 major steps:
 6. Convert the image with the lines drawn back to color.
 
 In order to draw a single line on the left and right lanes, I used a draw_lines_ext() function by that consisted of 4 major steps:
+
 1. Separated each Hough segment detected to left and right sided based on slope and recorded the coordinates of each.
 2. Used the coordinates recorded to fit a line for each side and found their coefficients a and b.
 3. Used the line coefficients to fit a line that runs from the bottom of the frame to the top of the polygon of interest.
-4. Drew the newly onbrained line onto the image 
+4. Drew the newly obtained line onto the image 
 
 
 ###2. Identify potential shortcomings with your current pipeline
@@ -37,11 +39,11 @@ One potential shortcoming would be what would happen when the car is changing la
 
 Another shortcoming could be when another car is cutting in front and it is blocking the view of the lane markings which will currently result in an error since it would not find at least one segment on left or right side to extrapolate from.
 
-A third shortcoming could be when there are a big number of smaller lane markings, shadows on the road, areas of gradient chage, that result in distractions in the form of false positive line segments, which seems to be the case with the challenge video.
+A third shortcoming could be when there are a big number of smaller lane markings, shadows on the road, areas of gradient change, that result in distractions in the form of false positive line segments, which seems to be the case with the challenge video.
 
 ###3. Suggest possible improvements to your pipeline
 
-A possible improvement to the changing lanes shortcoming could be to classify the segments not only by slope but also by proximity so it case piece together more than just a static left and right lines.
+A possible improvement to the changing lanes shortcoming could be to classify the segments not only by slope but also by proximity so it can piece together more than just a static left and right lines.
 
 An improvement to the no segments with particular slope problem could be to just check the count it found and not try to proceed drawing a line if count is 0.
 
